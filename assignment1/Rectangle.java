@@ -5,6 +5,8 @@
 // Assignment: 1
 // IDE Name: Intellij
 
+package assignment1;
+
 public class Rectangle {
 
     // Declare variables

@@ -5,7 +5,10 @@
 // Assignment: 2
 // IDE Name: Intellij
 
+package assignment2;
+
 import java.util.Scanner;
+
 
 public class Vowels {
 

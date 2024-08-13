@@ -5,6 +5,8 @@
 // Assignment: 1
 // IDE Name: Intellij
 
+package assignment1;
+
 public class DailyTemps {
 
     // Declaring attributes
