@@ -2,7 +2,7 @@
 // Class: CS 3305/Section 01
 // Term: Fall 2024
 // Instructor: Dr. Haddad
-// Assignment: 1
+// Assignment: 2
 // IDE Name: Intellij
 
 import java.util.Scanner;
