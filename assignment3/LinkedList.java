@@ -2,7 +2,7 @@
 // Class: CS 3305/Section 01
 // Term: Fall 2024
 // Instructor: Dr. Haddad
-// Assignment: 1
+// Assignment: 3
 // IDE Name: Intellij
 
 /*
@@ -47,8 +47,8 @@ public class LinkedList {
 
     //method #2: add node at index
     public void addAtIndex(int index, int data) {
-        //complete this method
-        if (index < 0 || index > countNodes() - 1) {
+        int numNodes = countNodes();
+        if (index < 0 || index >= numNodes) {
             System.out.println("Invalid index, try again");
             return;
         }
@@ -59,6 +59,8 @@ public class LinkedList {
 
         if (head == null || index == 0) {
             addFirstNode(data);
+        } else if (index == numNodes - 1) {
+            addLastNode(data);
         }
 
         for (int i = 1; i < index; i++) {
@@ -78,12 +80,19 @@ public class LinkedList {
         }
 
         head = head.next;
+
+        if (head == null) {
+            tail = null;
+        }
     }
 
     //method #4: remove last node
     public void removeLastNode() {
         if (tail == null) {
             System.out.println("List is empty");
+            return;
+        } else if (head.next == null) {
+            head = tail = null;
             return;
         }
 
@@ -92,18 +101,37 @@ public class LinkedList {
             cur = cur.next;
         }
 
-        cur.next = tail = null;
+        cur.next = null;
+        tail = cur;
     }
 
     //method #5: remove node at index
     public void removeAtIndex(int index) {
-        //complete this method
+        int numNodes = countNodes();
+        if (head == null) {
+            System.out.println("List is empty");
+        } else if (index < 0 || index >= numNodes) {
+            System.out.println("Invalid index, try again");
+        } else if (index == 0) {
+            removeFirstNode();
+        } else if (index == numNodes - 1) {
+            removeLastNode();
+        } else {
+            Node left = head;
+            Node right = head.next;
+
+            for (int i = 1; i < index; i++) {
+                left = left.next;
+                right = right.next;
+            }
+
+            left.next = right.next;
+        }
     }
 
     //method #6: countNodes
     public int countNodes() {
         int listSize = 0;
-       //complete this method
 
         Node cur = head;
         while (cur != null) {
@@ -115,13 +143,12 @@ public class LinkedList {
         return listSize;
     }
 
-    //method #7: pritnInReverse  (Recursive method)
+    //method #7: printInReverse  (Recursive method)
     public void printInReverse(Node L) {
        if (L != null) {
           printInReverse(L.next);
-          System.out.println(L.data);
+          System.out.print(L.data + "   ");
        }
-       //complete this method as recursive methods
     }
 
     //================= end of your part ==============

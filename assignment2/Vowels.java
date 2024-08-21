@@ -16,7 +16,7 @@ public class Vowels {
      * Returns the number of times vowels occur within the {@code String} input. This method is not case-sensitive.
      *
      * @param input the user-inputted {@code String} where vowels are to be counted
-     * @return {@code int} number of occurrences of vowels a, e, i, o, u
+     * @return number of occurrences of vowels a, e, i, o, u
      */
     public static int countVowels(String input) {
         // convert all letters to lower which allows method to ignore case
