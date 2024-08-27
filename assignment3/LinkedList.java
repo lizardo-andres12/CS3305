@@ -34,6 +34,7 @@ public class LinkedList {
     //======== Your part to complete for this assignment =========
 
     //method #1: add first node
+
     /**
      * Adds data to the beginning of the list. If list is empty, head and tail pointers are initialized
      * to the new node with the data given
@@ -58,7 +59,7 @@ public class LinkedList {
      * data and will print an error message to the console
      *
      * @param index The index where to add the new node in the list
-     * @param data The value of the new node in the list
+     * @param data  The value of the new node in the list
      */
     public void addAtIndex(int index, int data) {
         int numNodes = countNodes();
@@ -67,24 +68,24 @@ public class LinkedList {
             return;
         } else if (head == null || index == 0) {
             addFirstNode(data);
-        } else if (index == numNodes - 1) {
-            addLastNode(data);
+        } else {
+
+            Node node = new Node(data);
+            Node left = head;
+            Node right = head.next;
+
+            for (int i = 1; i < index; i++) {
+                left = left.next;
+                right = right.next;
+            }
+
+            left.next = node;
+            node.next = right;
         }
-
-        Node node = new Node(data);
-        Node left = head;
-        Node right = head.next;
-
-        for (int i = 1; i < index; i++) {
-            left = left.next;
-            right = right.next;
-        }
-
-        left.next = node;
-        node.next = right;
     }
 
     //method #3: remove first node
+
     /**
      * Removes the node pointed to by {@code head} and advances the head pointer to the next node.
      * If list is empty, print an error message to the console. If the list has one element, set
@@ -104,6 +105,7 @@ public class LinkedList {
     }
 
     //method #4: remove last node
+
     /**
      * Removes the tail node. The list must be traversed to the node before {@code tail} to remove tail.
      * If the list is empty, print an error message to the console. If there's only one element in the
@@ -128,6 +130,7 @@ public class LinkedList {
     }
 
     //method #5: remove node at index
+
     /**
      * Removes node at specific index. If list is empty, print an error message to the console. If the
      * index is not in the range of 0 to size-1, print and error message to the console. Use two
@@ -160,6 +163,7 @@ public class LinkedList {
     }
 
     //method #6: countNodes
+
     /**
      * Traverses the list and totals the number of nodes linked in the list
      *
@@ -170,8 +174,8 @@ public class LinkedList {
 
         Node cur = head;
         while (cur != null) {
-           listSize++;
-           cur = cur.next;
+            listSize++;
+            cur = cur.next;
         }
 
         // this methods returns the list size
@@ -179,6 +183,7 @@ public class LinkedList {
     }
 
     //method #7: printInReverse  (Recursive method)
+
     /**
      * Recursively iterates through the list until the input {@code Node} is null. Once the base case is
      * reached, print the values in returning time
@@ -186,10 +191,10 @@ public class LinkedList {
      * @param L The first node of the list to be printed
      */
     public void printInReverse(Node L) {
-       if (L != null) {
-          printInReverse(L.next);
-          System.out.print(L.data + "   ");
-       }
+        if (L != null) {
+            printInReverse(L.next);
+            System.out.print(L.data + "   ");
+        }
     }
 
     //================= end of your part ==============
