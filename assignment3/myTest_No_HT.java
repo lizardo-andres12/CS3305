@@ -10,10 +10,11 @@ package assignment3;
 import java.util.Scanner;
 
 
-public class myTest {
+public class myTest_No_HT {
     public static void main(String[] args) {
+        // initialize necessary variables
         Scanner sc = new Scanner(System.in);
-        LinkedList myList = new LinkedList();
+        LinkedList_No_HT myList = new LinkedList_No_HT();
         String menu = """
                 ---------MAIN MENU--------
                 1 – Add First Node
@@ -31,13 +32,17 @@ public class myTest {
         int choice = 0;
         int data, index;
 
+        // start menu loop
         do {
+            // print menu and get input from user
             System.out.print(menu);
             System.out.print(' ');
             choice = Integer.parseInt(sc.nextLine());
             System.out.println();
 
+            // match choice to operation
             switch (choice) {
+                // add to the head of linked list
                 case 1:
                     System.out.print("Enter the value to be stored:\t");
                     data = Integer.parseInt(sc.nextLine());
@@ -51,6 +56,7 @@ public class myTest {
                     myList.printList();
                     System.out.println();
                     break;
+                // add to the end of the linked list
                 case 2:
                     System.out.print("Enter the value to be stored:\t");
                     data = Integer.parseInt(sc.nextLine());
@@ -64,6 +70,7 @@ public class myTest {
                     myList.printList();
                     System.out.println();
                     break;
+                // add at specific index of list
                 case 3:
                     System.out.print("Enter the value to be stored:\t");
                     data = Integer.parseInt(sc.nextLine());
@@ -79,6 +86,7 @@ public class myTest {
                     myList.printList();
                     System.out.println();
                     break;
+                // remove head from list
                 case 4:
                     System.out.println("Method removeFirstNode()");
                     System.out.print("List content before removing first node is:\t");
@@ -89,6 +97,7 @@ public class myTest {
                     myList.printList();
                     System.out.println();
                     break;
+                // remove tail from list
                 case 5:
                     System.out.println("Method removeLastNode()");
                     System.out.print("List content before removing last node is:\t");
@@ -99,6 +108,7 @@ public class myTest {
                     myList.printList();
                     System.out.println();
                     break;
+                // remove value at specific index
                 case 6:
                     System.out.print("Enter the index to remove:\t");
                     index = Integer.parseInt(sc.nextLine());
@@ -112,22 +122,27 @@ public class myTest {
                     myList.printList();
                     System.out.println();
                     break;
+                // print the list size
                 case 7:
                     System.out.printf("List size is: %d\n", myList.countNodes());
                     break;
+                // print list from left to right
                 case 8:
                     System.out.print("Printing list forward:\t");
                     myList.printList();
                     System.out.println();
                     break;
+                // print list from right to left (recursive)
                 case 9:
                     System.out.print("Printing list in reverse:\t");
-                    myList.printInReverse(myList.head);
+                    myList.printInReverseRecursive(myList.ListName);
                     System.out.println();
                     break;
+                // print end program indicator
                 case 10:
                     System.out.println("Shutting down...");
                     break;
+                // invalid option indicator
                 default:
                     System.out.println("Invalid input, please try again");
             }
