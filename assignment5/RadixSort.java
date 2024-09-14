@@ -2,10 +2,11 @@
 // Class: CS 3305/Section 01
 // Term: Fall 2024
 // Instructor: Dr. Haddad
-// Assignment: 1
+// Assignment: 5
 // IDE Name: Intellij
 
 package assignment5;
+
 
 import java.util.Arrays;
 import java.util.Scanner;
