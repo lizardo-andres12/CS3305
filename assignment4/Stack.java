@@ -8,6 +8,19 @@
 package assignment4;
 
 
+/**
+ * A class that implements the Stack ADT using a Linked-List as the underlying data structure. The {@link Node} class is
+ * nested within this class. Implements methods:
+ * <ul>
+ *     <li>push</li>
+ *     <li>pop</li>
+ *     <li>top</li>
+ *     <li>printStack</li>
+ *     <li>size</li>
+ *     <li>isEmpty</li>
+ * </ul>
+ * @param <E>   The data type of the Stack
+ */
 public class Stack<E> {
 
     private Node<E> top, bottom;

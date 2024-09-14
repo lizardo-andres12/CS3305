@@ -12,6 +12,13 @@ import java.util.Scanner;
 
 public class ReverseString {
 
+    /**
+     * Uses {@link Stack} to reverse the word order of a string. {@code words} is split by spaces and stored as
+     * an array called {@code wordList}. From left to right, words from {@code wordList} are pushed onto the stack and
+     * then popped and stored in the output variable
+     * @param words The {@code String} of words to reverse order
+     * @return      The word-order reversal of {@code words}
+     */
     public static String reverseString(String words) {
         Stack<String> stack = new Stack<>();
         String[] wordList = words.split(" ");
@@ -31,6 +38,12 @@ public class ReverseString {
         return output;
     }
 
+    /**
+     * Entry point of the application. No command-line arguments are expected. Runs the menu loop and allows user to
+     * interact with the program. Asks for menu choice first and then enters switch statement, where corresponding
+     * prompts are displayed to execute desired task. User can enter various phrases to reverse.
+     * @param args  The command-line arguments. Expects no arguments
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String menu = """

@@ -12,6 +12,12 @@ import java.util.Scanner;
 
 public class CheckPalindrome {
 
+    /**
+     * Uses a {@link Stack} to check whether {@code word} is a palindrome. Pushes half of the word left to right onto
+     * stack and checks the subsequent pops on the other half of the string from right to left.
+     * @param word  The {@link String} word to be checked
+     * @return      {@code true} if {@code word} is a palindrome, {@code false} if otherwise
+     */
     public static boolean isPalindrome(String word) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < word.length() / 2; i++) {
@@ -27,6 +33,12 @@ public class CheckPalindrome {
         return true;
     }
 
+    /**
+     * Entry point of the application. No command-line arguments are expected. Runs the menu loop and allows user to
+     * interact with the program. Asks for menu choice first and then enters switch statement, where corresponding
+     * prompts are displayed to execute desired task. User can test various words to see if they are palindromes or not.
+     * @param args  The command-line arguments. Expects no arguments
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String menu = """
