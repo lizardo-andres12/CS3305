@@ -45,6 +45,7 @@ public class TestMyStack {
             System.out.println();
 
             switch (choice) {
+                // Push data to the stack
                 case 1:
                     System.out.print("Enter value to push to top of the stack:\t");
                     data = Integer.parseInt(sc.nextLine());
@@ -55,6 +56,7 @@ public class TestMyStack {
                     System.out.printf("Stack after pushing:\t", data);
                     myStack.printStack();
                     break;
+                // Pop data from the stack
                 case 2:
                     System.out.printf("Stack before popping:\t");
                     myStack.printStack();
@@ -62,27 +64,33 @@ public class TestMyStack {
                     System.out.printf("Stack after popping:\t");
                     myStack.printStack();
                     break;
+                // Get top element of stack
                 case 3:
                     System.out.printf("Stack top: %d\t\n", myStack.top());
                     myStack.printStack();
                     break;
+                // Get current size of stack
                 case 4:
                     System.out.print("Current Stack:\t");
                     myStack.printStack();
                     System.out.printf("Stack's current size: %d\n", myStack.size());
                     break;
+                // Determine if the stack is empty or not
                 case 5:
                     System.out.print("Current Stack:\t");
                     myStack.printStack();
                     System.out.println("Is stack empty: " + myStack.isEmpty());
                     break;
+                // Print current stack
                 case 6:
                     System.out.print("Current Stack:\t");
                     myStack.printStack();
                     break;
+                // Exit loop
                 case 7:
                     System.out.println("Shutting down ...");
                     break;
+                // Invalid input case
                 default:
                     System.out.println("Invalid input, try again");
             }

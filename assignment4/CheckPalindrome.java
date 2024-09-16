@@ -24,15 +24,18 @@ public class CheckPalindrome {
     public static boolean isPalindrome(String word) {
         Stack<Character> stack = new Stack<>();
         int n = word.length();
-        int mid = n & 1;
-        for (int i = 0; i < n / 2; i++) {
+        int mid = n/2 + (n & 1);
+        for (int i = 0; i < n/2; i++) {
             stack.push(word.charAt(i));
         }
 
-        for (int i = n + mid; i < n; i++) {
-            if (stack.top() != word.charAt(word.length() - i - 1)) {
+        for (int i = 0; i < n/2; i++) {
+            System.out.println("Top: " + stack.top());
+            System.out.println("Cur char: " + word.charAt(mid + i));
+            if (stack.top() != word.charAt(mid + i)) {
                 return false;
             }
+            stack.pop();
         }
 
         return true;
@@ -62,18 +65,22 @@ public class CheckPalindrome {
             System.out.println();
 
             switch (choice) {
+                // Set word
                 case 1:
                     System.out.print("Enter the word: ");
                     word = sc.nextLine();
                     System.out.printf("Current word is \"%s\"\n", word);
                     break;
+                // Judge if word is palindrome
                 case 2:
                     System.out.printf("Entered String:\t\"%s\"\n", word);
                     System.out.printf("Judgement:\t\t%s\n", isPalindrome(word) ? "Palindrome" : "Not Palindrome");
                     break;
+                // Exit loop
                 case 3:
                     System.out.println("Shutting down...");
                     break;
+                // Invalid input case
                 default:
                     System.out.println("Invalid input, try again");
             }
