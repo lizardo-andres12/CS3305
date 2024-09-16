@@ -36,7 +36,8 @@ public class Stack<E> {
 
     /**
      * Adds param to the top of the stack. If stack contains no nodes, both top and bottom are set to new node
-     * containing param. If stack is not empty, node is added to the front of the current list.
+     * containing param. If stack is not empty, node is added to the front of the current list. {@code size} will be
+     * incremented.
      * @param data  The data to be pushed onto the stack.
      */
     public void push(E data) {
@@ -56,8 +57,8 @@ public class Stack<E> {
 
     /**
      * Removes, but does not return, the node {@code top}. If the stack is empty, prints an error message. If not, the
-     * first node is removed and {@code top} is set to null. If there was only one node in the stack, {@code bottom} is
-     * set to null as well.
+     * first node is removed and {@code top} is set to {@code top.next}. If there was only one node in the stack,
+     * {@code bottom} is set to null as well.
      */
     public void pop() {
         if (isEmpty()) {
