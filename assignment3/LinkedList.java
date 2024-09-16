@@ -162,8 +162,6 @@ public class LinkedList {
         return listSize;
     }
 
-    //method #7: printInReverse  (Recursive method)
-
     /**
      * Recursively iterates through the list until the input {@code Node} is null. Once the base case is
      * reached, print the values in returning time
