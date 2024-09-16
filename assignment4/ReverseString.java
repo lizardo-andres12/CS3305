@@ -10,6 +10,9 @@ package assignment4;
 import java.util.Scanner;
 
 
+/**
+ * Class containing a program entry point and a method to reverse the order of any given string of words.
+ */
 public class ReverseString {
 
     /**

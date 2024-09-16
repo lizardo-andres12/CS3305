@@ -7,11 +7,22 @@
 
 package assignment4;
 
-
 import java.util.Scanner;
 
+
+/**
+ * Class with a program entry point. The entry point will run a sentinel loop to display a menu and allow user to enter
+ * choices corresponding to options. Those choices can also prompt for further relevant information and print outputs
+ * to the console
+ */
 public class TestMyStack {
 
+    /**
+     * Entry point of the application. No command-line arguments are expected. Runs the menu loop and allows user to
+     * interact with the program. Asks for menu choice first and then enters switch statement, where corresponding
+     * prompts are displayed to execute desired task. User can enter various phrases to reverse.
+     * @param args  The command-line arguments. Expects no arguments
+     */
     public static void main(String[] args) {
         Stack<Integer> myStack = new Stack<>();
         Scanner sc = new Scanner(System.in);

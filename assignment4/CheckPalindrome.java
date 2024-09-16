@@ -10,6 +10,9 @@ package assignment4;
 import java.util.Scanner;
 
 
+/**
+ * Class containing program entry point and method to check if any given string is a palindrome.
+ */
 public class CheckPalindrome {
 
     /**
