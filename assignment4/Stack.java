@@ -22,7 +22,7 @@ package assignment4;
  * @param <E>   The data type of the Stack.
  */
 public class Stack<E> {
-    private Node<E> top, bottom;
+    private Node<E> top;
     private int size;
 
     /**
