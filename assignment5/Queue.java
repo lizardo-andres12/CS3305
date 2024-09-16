@@ -7,7 +7,6 @@
 
 package assignment5;
 
-import assignment4.Stack;
 
 /**
  * A class that implements the Queue ADT using a Linked-List as the underlying data structure. The {@link Queue} class
@@ -28,7 +27,7 @@ public class Queue<E> {
     private int size;
 
     /**
-     * Default constructor for {@link Stack}. Initializes {@code top} and {@code bottom} to null and {@code size} to 0.
+     * Default constructor for {@link Queue}. Initializes {@code top} and {@code bottom} to null and {@code size} to 0.
      */
     public Queue() {
         this.first = this.last = null;

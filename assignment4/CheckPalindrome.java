@@ -23,11 +23,13 @@ public class CheckPalindrome {
      */
     public static boolean isPalindrome(String word) {
         Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < word.length() / 2; i++) {
+        int n = word.length();
+        int mid = n & 1;
+        for (int i = 0; i < n / 2; i++) {
             stack.push(word.charAt(i));
         }
 
-        for (int i = 0; i < word.length() / 2; i++) {
+        for (int i = n + mid; i < n; i++) {
             if (stack.top() != word.charAt(word.length() - i - 1)) {
                 return false;
             }
