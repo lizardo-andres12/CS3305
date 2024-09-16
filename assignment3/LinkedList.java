@@ -31,10 +31,6 @@ public class LinkedList {
         }
     }
 
-    //======== Your part to complete for this assignment =========
-
-    //method #1: add first node
-
     /**
      * Adds data to the beginning of the list. If list is empty, head and tail pointers are initialized
      * to the new node with the data given
@@ -52,8 +48,6 @@ public class LinkedList {
         head = node;
     }
 
-    //method #2: add node at index
-
     /**
      * Adds data at the index provided as argument. Indexes outside of range 0 to size-1 will not add the
      * data and will print an error message to the console
@@ -65,11 +59,9 @@ public class LinkedList {
         int numNodes = countNodes();
         if (index < 0 || index >= numNodes) {
             System.out.println("Invalid index, try again");
-            return;
         } else if (head == null || index == 0) {
             addFirstNode(data);
         } else {
-
             Node node = new Node(data);
             Node left = head;
             Node right = head.next;
@@ -84,8 +76,6 @@ public class LinkedList {
         }
     }
 
-    //method #3: remove first node
-
     /**
      * Removes the node pointed to by {@code head} and advances the head pointer to the next node.
      * If list is empty, print an error message to the console. If the list has one element, set
@@ -94,17 +84,13 @@ public class LinkedList {
     public void removeFirstNode() {
         if (head == null) {
             System.out.println("List is empty");
-            return;
-        }
-
-        head = head.next;
-
-        if (head == null) {
-            tail = null;
+        } else {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }
         }
     }
-
-    //method #4: remove last node
 
     /**
      * Removes the tail node. The list must be traversed to the node before {@code tail} to remove tail.
@@ -114,22 +100,18 @@ public class LinkedList {
     public void removeLastNode() {
         if (head == null) {
             System.out.println("List is empty");
-            return;
         } else if (head.next == null) {
             head = tail = null;
-            return;
-        }
+        } else {
+            Node cur = head;
+            while (cur.next != tail) {
+                cur = cur.next;
+            }
 
-        Node cur = head;
-        while (cur.next != tail) {
-            cur = cur.next;
+            cur.next = null;
+            tail = cur;
         }
-
-        cur.next = null;
-        tail = cur;
     }
-
-    //method #5: remove node at index
 
     /**
      * Removes node at specific index. If list is empty, print an error message to the console. If the
@@ -161,8 +143,6 @@ public class LinkedList {
             left.next = right.next;
         }
     }
-
-    //method #6: countNodes
 
     /**
      * Traverses the list and totals the number of nodes linked in the list
@@ -196,8 +176,6 @@ public class LinkedList {
             System.out.print(L.data + "   ");
         }
     }
-
-    //================= end of your part ==============
 
     //method to print out the list
     public void printList() {
