@@ -26,11 +26,10 @@ public class Stack<E> {
     private int size;
 
     /**
-     * Default constructor for {@link Stack}. Initializes {@code top} and {@code bottom} to null and {@code size} to 0.
+     * Default constructor for {@link Stack}. Initializes {@code top} to null and {@code size} to 0.
      */
     public Stack () {
         top = null;
-        bottom = null;
         size = 0;
     }
 
@@ -42,34 +41,29 @@ public class Stack<E> {
      */
     public void push(E data) {
         if (top == null) {
-            top = bottom = new Node<>(data);
+            top = new Node<>(data);
         } else {
             Node<E> node = new Node<>(data);
             node.next = top;
             top = node;
-
-            if (bottom == null) {
-                bottom = top;
-            }
         }
         size++;
     }
 
     /**
      * Removes, but does not return, the node {@code top}. If the stack is empty, prints an error message. If not, the
-     * first node is removed and {@code top} is set to {@code top.next}. If there was only one node in the stack,
-     * {@code bottom} is set to null as well.
+     * first node is removed and {@code top} is set to {@code top.next}.
      */
-    public void pop() {
+    public E pop() {
         if (isEmpty()) {
             System.out.println("Stack is empty");
+            return null;
         } else {
-            if (top == bottom) {
-                top = bottom = null;
-            } else {
-                top = top.next;
-            }
+            E data = top.data;
+            top = top.next;
             size--;
+
+            return data;
         }
     }
 

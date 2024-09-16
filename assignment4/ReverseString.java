@@ -32,8 +32,7 @@ public class ReverseString {
         }
 
         while(!stack.isEmpty()) {
-            output += stack.top() + ' ';
-            stack.pop();
+            output += stack.pop() + ' ';
         }
 
         output += '\b';

@@ -30,12 +30,9 @@ public class CheckPalindrome {
         }
 
         for (int i = 0; i < n/2; i++) {
-            System.out.println("Top: " + stack.top());
-            System.out.println("Cur char: " + word.charAt(mid + i));
-            if (stack.top() != word.charAt(mid + i)) {
+            if (stack.pop() != word.charAt(mid + i)) {
                 return false;
             }
-            stack.pop();
         }
 
         return true;
