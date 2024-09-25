@@ -23,7 +23,7 @@ public class RadixSort {
      * @param nums  The array of integers input by the user.
      * @return      The number of digits of the largest number in {@code param}.
      */
-    public static int getK(int[] nums) {
+    public static int countDigits(int[] nums) {
         int max = nums[0];
         for (int num : nums) {
             max = Math.max(max, num);
@@ -36,6 +36,10 @@ public class RadixSort {
         }
 
         return k;
+    }
+
+    public static int extractDigit(int num, int power) {
+        return (int) ((num / Math.pow(10, power)) % 10);
     }
 
     /**
@@ -60,13 +64,13 @@ public class RadixSort {
      */
     public static void radixSort(int[] nums) {
         Queue<Integer>[] buckets = getBuckets();
-        int k = getK(nums);
+        int k = countDigits(nums);
         int shift = 1;
 
         for (int i = 0; i < k; i++) {
             int curQueue = 0;
             for (int num : nums) {
-                int digit = num / shift % 10;
+                int digit = extractDigit(num, i);
                 buckets[digit].enqueue(num);
             }
 
