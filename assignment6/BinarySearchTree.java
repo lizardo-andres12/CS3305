@@ -2,7 +2,7 @@ package assignment6;
 
 public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
 
-    private Node<E> root;
+    private TreeNode<E> root;
     private int size;
 
     public BinarySearchTree() {
@@ -22,27 +22,27 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
     @Override
     public boolean insert(E data) {
         if (root == null) {
-            root = new Node<>(data);
+            root = new TreeNode<>(data);
             return true;
         } else {
             return insert(data, root);
         }
     }
 
-    private boolean insert(E data, Node<E> root) {
+    private boolean insert(E data, TreeNode<E> root) {
         if (root == null) {
             return false;
         } else {
             if (data.compareTo(root.data) < 0) { // if data is smaller
                 if (root.left == null) {
-                    root.left = new Node<>(data);
+                    root.left = new TreeNode<>(data);
                     return true;
                 } else {
                     return insert(data, root.left);
                 }
             } else if (data.compareTo(root.data) > 0) { // if data is larger
                 if (root.right == null) {
-                    root.right = new Node<>(data);
+                    root.right = new TreeNode<>(data);
                     return true;
                 } else {
                     return insert(data, root.right);
@@ -62,7 +62,7 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         return search(data, root) != null;
     }
 
-    private Node<E> search(E data, Node<E> root) {
+    private TreeNode<E> search(E data, TreeNode<E> root) {
         if (root == null) {
             return null;
         } else {
@@ -76,7 +76,7 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         }
     }
 
-    public Node<E> findParent(E data, Node<E> root) {
+    public TreeNode<E> findParent(E data, TreeNode<E> root) {
         if (root == null) {
             return null;
         } else {
@@ -105,7 +105,7 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         inorder(root);
     }
 
-    private void inorder(Node<E> root) {
+    private void inorder(TreeNode<E> root) {
         if (root != null) {
             inorder(root.left);
             System.out.println(root.data);
@@ -118,7 +118,7 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         preorder(root);
     }
 
-    private void preorder(Node<E> root) {
+    private void preorder(TreeNode<E> root) {
         if (root != null) {
             System.out.println(root.data);
             preorder(root.left);
@@ -131,7 +131,7 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         postorder(root);
     }
 
-    private void postorder(Node<E> root) {
+    private void postorder(TreeNode<E> root) {
         if (root != null) {
             preorder(root.left);
             preorder(root.right);
