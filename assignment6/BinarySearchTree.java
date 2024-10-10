@@ -5,29 +5,17 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
     private Node<E> root;
     private int size;
 
-    public E getMax() {
-        if (root == null) {
-            return null;
-        } else {
-            Node<E> cur = root;
-            while (cur.right != null) {
-                cur = cur.right;
-            }
-
-            return cur.data;
-        }
+    public BinarySearchTree() {
+        root = null;
+        size = 0;
     }
 
-    public E getMin() {
-        if (root == null) {
-            return null;
-        } else {
-            Node<E> cur = root;
-            while (cur.left != null) {
-                cur = cur.left;
-            }
+    public BinarySearchTree(E[] arr) {
+        root = null;
+        size = 0;
 
-            return cur.data;
+        for (int i = 0; i < arr.length; i++) {
+            insert(arr[i]);
         }
     }
 
@@ -45,14 +33,14 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         if (root == null) {
             return false;
         } else {
-            if (root.data.compareTo(data) < 0) {
+            if (data.compareTo(root.data) < 0) { // if data is smaller
                 if (root.left == null) {
                     root.left = new Node<>(data);
                     return true;
                 } else {
                     return insert(data, root.left);
                 }
-            } else if (root.data.compareTo(data) > 0) {
+            } else if (data.compareTo(root.data) > 0) { // if data is larger
                 if (root.right == null) {
                     root.right = new Node<>(data);
                     return true;
@@ -65,31 +53,89 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
     }
 
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
     public boolean remove(E data) {
-        return false;
+        return findParent(data, root) != null;
     }
 
     @Override
     public boolean search(E data) {
-        return search(data, root);
+        return search(data, root) != null;
     }
 
-    private boolean search(E data, Node<E> root) {
+    private Node<E> search(E data, Node<E> root) {
         if (root == null) {
-            return false;
+            return null;
         } else {
             if (root.data.compareTo(data) == 0) {
-                return true;
+                return root;
             } else if (root.data.compareTo(data) < 0) {
                 return search(data, root.left);
             } else {
                 return search(data, root.right);
             }
+        }
+    }
+
+    public Node<E> findParent(E data, Node<E> root) {
+        if (root == null) {
+            return null;
+        } else {
+            if (root.data.compareTo(data) > 0) {
+                if (root.left == null) {
+                    return null;
+                } else if (root.left.data.compareTo(data) == 0) {
+                    return root;
+                } else {
+                    return findParent(data, root.left);
+                }
+            } else {
+                if (root.right == null) {
+                    return null;
+                } else if (root.right.data.compareTo(data) == 0) {
+                    return root;
+                } else {
+                    return findParent(data, root.right);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void inorder() {
+        inorder(root);
+    }
+
+    private void inorder(Node<E> root) {
+        if (root != null) {
+            inorder(root.left);
+            System.out.println(root.data);
+            inorder(root.right);
+        }
+    }
+
+    @Override
+    public void preorder() {
+        preorder(root);
+    }
+
+    private void preorder(Node<E> root) {
+        if (root != null) {
+            System.out.println(root.data);
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+    @Override
+    public void postorder() {
+        postorder(root);
+    }
+
+    private void postorder(Node<E> root) {
+        if (root != null) {
+            preorder(root.left);
+            preorder(root.right);
+            System.out.println(root.data);
         }
     }
 
@@ -99,17 +145,7 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
     }
 
     @Override
-    public void inorder() {
-
-    }
-
-    @Override
-    public void preorder() {
-
-    }
-
-    @Override
-    public void postorder() {
-
+    public boolean isEmpty() {
+        return size == 0;
     }
 }
