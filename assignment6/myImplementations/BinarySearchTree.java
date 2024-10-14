@@ -1,6 +1,14 @@
-package assignment6;
+// Name: Lizardo Hernandez
+// Class: CS 3305/Section 01
+// Term: Fall 2024
+// Instructor: Dr. Haddad
+// Assignment: 6
+// IDE Name: Intellij
 
-public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
+package assignment6.myImplementations;
+
+
+public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
     private TreeNode<E> root;
     private int size;
@@ -14,8 +22,8 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
         root = null;
         size = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            insert(arr[i]);
+        for (E e : arr) {
+            insert(e);
         }
     }
 
@@ -97,6 +105,30 @@ public class BinarySearchTree <E extends Comparable<E>> implements Tree<E> {
                     return findParent(data, root.right);
                 }
             }
+        }
+    }
+
+    public E getMax() {
+        return getMax(root);
+    }
+
+    private E getMax(TreeNode<E> root) {
+        if (root.right == null) {
+            return root.data;
+        } else {
+            return getMax(root.right);
+        }
+    }
+
+    public E getMin() {
+        return getMin(root);
+    }
+
+    private E getMin(TreeNode<E> root) {
+        if (root.left == null) {
+            return root.data;
+        } else {
+            return getMin(root.left);
         }
     }
 
