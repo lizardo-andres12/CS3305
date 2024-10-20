@@ -33,10 +33,62 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     public boolean insert(E data) {
         if (root == null) {
             root = new TreeNode<>(data);
+            size++;
             return true;
         } else {
-            return insert(data, root);
+            boolean inserted = insert(data, root);
+            size = inserted ? size + 1 : size;
+            return inserted;
         }
+    }
+
+    @Override
+    public boolean remove(E data) {
+        if (root == null) {
+            return false;
+        } else {
+            boolean removed = removeIfRoot(data, root);
+            size = removed ? size - 1 : size;
+            return removed;
+        }
+    }
+
+    @Override
+    public boolean search(E data) {
+        return search(data, root) != null;
+    }
+
+    @Override
+    public void inorder() {
+        inorder(root);
+    }
+
+    @Override
+    public void preorder() {
+        preorder(root);
+    }
+
+    @Override
+    public void postorder() {
+        postorder(root);
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public E getMax() {
+        return getMax(root);
+    }
+
+    public E getMin() {
+        return getMin(root);
     }
 
     private boolean insert(E data, TreeNode<E> root) {
@@ -62,12 +114,17 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
         return false;
     }
 
-    @Override
-    public boolean remove(E data) {
+    private TreeNode<E> search(E data, TreeNode<E> root) {
         if (root == null) {
-            return false;
+            return null;
         } else {
-            return removeIfRoot(data, root);
+            if (root.data.compareTo(data) == 0) {
+                return root;
+            } else if (root.data.compareTo(data) < 0) {
+                return search(data, root.left);
+            } else {
+                return search(data, root.right);
+            }
         }
     }
 
@@ -114,30 +171,12 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
                     }
                 } else {
                     E max = getMax(nodeToDelete.left);
-                    remove(max, nodeToDelete);
+                    boolean returnValue = remove(max, nodeToDelete);
                     nodeToDelete.data = max; // get max of the node to delete left subtree
+                    return returnValue;
                 }
             }
             return true;
-        }
-    }
-
-    @Override
-    public boolean search(E data) {
-        return search(data, root) != null;
-    }
-
-    private TreeNode<E> search(E data, TreeNode<E> root) {
-        if (root == null) {
-            return null;
-        } else {
-            if (root.data.compareTo(data) == 0) {
-                return root;
-            } else if (root.data.compareTo(data) < 0) {
-                return search(data, root.left);
-            } else {
-                return search(data, root.right);
-            }
         }
     }
 
@@ -177,20 +216,12 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
         }
     }
 
-    public E getMax() {
-        return getMax(root);
-    }
-
     private E getMax(TreeNode<E> root) {
         if (root.right == null) {
             return root.data;
         } else {
             return getMax(root.right);
         }
-    }
-
-    public E getMin() {
-        return getMin(root);
     }
 
     private E getMin(TreeNode<E> root) {
@@ -201,22 +232,12 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
         }
     }
 
-    @Override
-    public void inorder() {
-        inorder(root);
-    }
-
     private void inorder(TreeNode<E> root) {
         if (root != null) {
             inorder(root.left);
             System.out.println(root.data);
             inorder(root.right);
         }
-    }
-
-    @Override
-    public void preorder() {
-        preorder(root);
     }
 
     private void preorder(TreeNode<E> root) {
@@ -227,26 +248,11 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
         }
     }
 
-    @Override
-    public void postorder() {
-        postorder(root);
-    }
-
     private void postorder(TreeNode<E> root) {
         if (root != null) {
             preorder(root.left);
             preorder(root.right);
             System.out.println(root.data);
         }
-    }
-
-    @Override
-    public int size() {
-        return size;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
     }
 }
