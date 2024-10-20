@@ -8,6 +8,8 @@
 package assignment6.myImplementations;
 
 
+import assignment5.Queue;
+
 public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
     private TreeNode<E> root;
@@ -62,7 +64,62 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
     @Override
     public boolean remove(E data) {
-        return findParent(data, root) != null;
+        if (root == null) {
+            return false;
+        } else {
+            return removeIfRoot(data, root);
+        }
+    }
+
+    private boolean removeIfRoot(E data, TreeNode<E> root) {
+        if (root.data == data) {
+            TreeNode<E> dummyRoot = new TreeNode<>(data);
+            dummyRoot.right = root;
+            return remove(data, dummyRoot);
+        } else {
+            return remove(data, root);
+        }
+    }
+
+    private boolean remove(E data, TreeNode<E> root) {
+        TreeNode<E> cur = findParent(data, root);
+        if (cur == null) {
+            return false;
+        } else {
+            if (cur.left != null && cur.left.data == data) { // cur left is node to delete
+                TreeNode<E> nodeToDelete = cur.left;
+                if (nodeToDelete.left == null && nodeToDelete.right == null) { // case 1
+                    cur.left = null;
+                } else if (nodeToDelete.left == null || nodeToDelete.right == null) { // case 2
+                    if (nodeToDelete.left != null) {
+                        cur.left = nodeToDelete.left;
+                    } else {
+                        cur.left = nodeToDelete.right;
+                    }
+                } else {
+                    E max = getMax(nodeToDelete.left);
+                    boolean returnValue = remove(max, nodeToDelete);
+                    nodeToDelete.data = max; // get max of the node to delete left subtree
+                    return returnValue;
+                }
+            } else { // cur right is node to delete
+                TreeNode<E> nodeToDelete = cur.right;
+                if (nodeToDelete.left == null && nodeToDelete.right == null) { // case 1
+                    cur.right = null;
+                } else if (nodeToDelete.left == null || nodeToDelete.right == null) { // case 2
+                    if (nodeToDelete.left != null) {
+                        cur.right = nodeToDelete.left;
+                    } else {
+                        cur.right = nodeToDelete.right;
+                    }
+                } else {
+                    E max = getMax(nodeToDelete.left);
+                    remove(max, nodeToDelete);
+                    nodeToDelete.data = max; // get max of the node to delete left subtree
+                }
+            }
+            return true;
+        }
     }
 
     @Override
@@ -105,6 +162,18 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
                     return findParent(data, root.right);
                 }
             }
+        }
+    }
+
+    public void bfs() {
+        Queue<TreeNode<E>> queue = new Queue<>();
+        queue.enqueue(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode<E> cur = queue.dequeue();
+            if (cur.left != null) { queue.enqueue(cur.left); }
+            if (cur.right != null) { queue.enqueue(cur.right); }
+            System.out.print(cur.data + "  ");
         }
     }
 
