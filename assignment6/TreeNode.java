@@ -1,4 +1,4 @@
-package assignment6.myImplementations;
+package assignment6;
 
 public class TreeNode<E> {
     public E data;

@@ -1,31 +1,22 @@
-// Class Tree.java
-// Textbook, Listing 25.3, Page 935
+// Name: Lizardo Hernandez
+// Class: CS 3305/Section 01
+// Term: Fall 2024
+// Instructor: Dr. Haddad
+// Assignment: 6
+// IDE Name: Intellij
+
 package assignment6;
 
-public interface Tree<E> extends Iterable<E> {
-  /** Return true if the element is in the tree */
-  public boolean search(E e);
+import java.util.ArrayList;
 
-  /** Insert element o into the binary tree
-   * Return true if the element is inserted successfully */
-  public boolean insert(E e);
-
-  /** Delete the specified element from the tree
-   * Return true if the element is deleted successfully */
-  public boolean delete(E e);
-
-  /** Inorder traversal from the root*/
-  public void inorder();
-
-  /** Postorder traversal from the root */
-  public void postorder();
-
-  /** Preorder traversal from the root */
-  public void preorder();
-
-  /** Get the number of nodes in the tree */
-  public int getSize();
-
-  /** Return true if the tree is empty */
-  public boolean isEmpty();
+public interface Tree<E> {
+    public boolean insert(E data);
+    public boolean isEmpty();
+    public boolean remove(E data);
+    public boolean search(E data);
+    public ArrayList<TreeNode<E>> path(E data);
+    public int size();
+    public void inorder();
+    public void preorder();
+    public void postorder();
 }

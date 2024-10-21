@@ -5,10 +5,12 @@
 // Assignment: 6
 // IDE Name: Intellij
 
-package assignment6.myImplementations;
+package assignment6;
 
 
 import assignment5.Queue;
+
+import java.util.ArrayList;
 
 public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
 
@@ -56,6 +58,11 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     @Override
     public boolean search(E data) {
         return search(data, root) != null;
+    }
+
+    @Override
+    public ArrayList<TreeNode<E>> path(E data) {
+        return new ArrayList<>();
     }
 
     @Override
@@ -235,7 +242,7 @@ public class BinarySearchTree<E extends Comparable<E>> implements Tree<E> {
     private void inorder(TreeNode<E> root) {
         if (root != null) {
             inorder(root.left);
-            System.out.println(root.data);
+            System.out.print(root.data + " ");
             inorder(root.right);
         }
     }
