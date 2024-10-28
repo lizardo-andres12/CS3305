@@ -161,9 +161,9 @@ public class MyTestBST {
                             System.out.println("Testing method Path from Root to Data Element (Option 5)");
                             if (stringBST.search(input)) {
                                 ArrayList<TreeNode<String>> path = stringBST.path(input);
-                                System.out.print("Path from root to " + input + "\t");
+                                System.out.print("Path from root to " + input + ":\t");
                                 for (TreeNode<String> node : path) {
-                                    System.out.print(node.data + ' ');
+                                    System.out.print(node.data + " ");
                                 }
                             } else {
                                 System.out.println("Element " + input + " is not in the list");
@@ -173,9 +173,9 @@ public class MyTestBST {
                             System.out.println("Testing method Path from Root to Data Element (Option 5)");
                             if (intBST.search(otherInput)) {
                                 ArrayList<TreeNode<Integer>> path = intBST.path(otherInput);
-                                System.out.print("Path from root to " + otherInput + "\t");
+                                System.out.print("Path from root to " + otherInput + ":\t");
                                 for (TreeNode<Integer> node : path) {
-                                    System.out.print(node.data + ' ');
+                                    System.out.print(node.data+ " ");
                                 }
                             } else {
                                 System.out.println("Element " + otherInput + " is not in the list");
