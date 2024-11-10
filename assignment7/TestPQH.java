@@ -153,13 +153,13 @@ public class TestPQH {
                     case 6: // check front
                         System.out.println("Testing method Front");
                         if (dtype) {
-                            if (strPQ.front() != null) {
+                            if (strPQ.front() == null) {
                                 System.out.println("PQ is empty");
                             } else {
                                 System.out.println("PQ front:\t" + strPQ.front());
                             }
                         } else {
-                            if (intPQ.front() != null) {
+                            if (intPQ.front() == null) {
                                 System.out.println("PQ is empty");
                             } else {
                                 System.out.println("PQ front:\t" + intPQ.front());
